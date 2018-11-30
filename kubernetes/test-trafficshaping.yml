@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/ingress-bandwidth: 1000000
+    kubernetes.io/egress-bandwidth: 1000000
+  labels:
+    run: test-tf
+  name: test-tf
+spec:
+  containers:
+  - args:
+    - iperf3
+    - -s
+    image: infrabuilder/netbench:server-iperf3
+    name: iperf-srv
+  nodeSelector: 
+    kubernetes.io/hostname: s02
+  restartPolicy: Never

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: ftp-srv
+  name: ftp-srv
+spec:
+  containers:
+  - image: infrabuilder/netbench:server-ftp
+    name: ftpd-srv
+    env:
+    - name: ANON_MAX_RATE
+      value: "0"
+    volumeMounts:
+    - name: data
+      mountPath: /var/ftp
+  volumes:
+  - name: data
+    hostPath:
+      path: /home/ubuntu
+  nodeSelector: 
+    kubernetes.io/hostname: s02
+  restartPolicy: Never

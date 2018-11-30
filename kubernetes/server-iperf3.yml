@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: iperf-srv
+  name: iperf-srv
+spec:
+  containers:
+  - args:
+    - iperf3
+    - -s
+    image: infrabuilder/netbench:server-iperf3
+    name: iperf-srv
+  nodeSelector: 
+    kubernetes.io/hostname: s02
+  restartPolicy: Never

@@ -1,0 +1,4 @@
+.*
+!.gitignore
+10G.dat
+kubeconfig
