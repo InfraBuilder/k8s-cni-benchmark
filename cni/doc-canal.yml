@@ -130,11 +130,11 @@ subjects:
   name: canal
   namespace: kube-system
 ---
-# Canal Version v3.3.0
-# https://docs.projectcalico.org/v3.3/releases#v3.3.0
+# Canal Version v3.3.6
+# https://docs.projectcalico.org/v3.3/releases#v3.3.6
 # This manifest includes the following component versions:
-#   calico/node:v3.3.0
-#   calico/cni:v3.3.0
+#   calico/node:v3.3.6
+#   calico/cni:v3.3.6
 #   coreos/flannel:v0.9.1
 
 # This ConfigMap is used to configure a self-hosted Canal installation.
@@ -162,7 +162,6 @@ data:
       "plugins": [
         {
           "type": "calico",
-          "mtu": 8950,
           "log_level": "info",
           "datastore_type": "kubernetes",
           "nodename": "__KUBERNETES_NODE_NAME__",
@@ -248,7 +247,7 @@ spec:
         # container programs network policy and routes on each
         # host.
         - name: calico-node
-          image: quay.io/calico/node:v3.3.0
+          image: calico/node:v3.3.6
           env:
             # Use Kubernetes API as the backing datastore.
             - name: DATASTORE_TYPE
@@ -327,7 +326,7 @@ spec:
         # This container installs the Calico CNI binaries
         # and CNI network config file on each node.
         - name: install-cni
-          image: quay.io/calico/cni:v3.3.0
+          image: calico/cni:v3.3.6
           command: ["/install-cni.sh"]
           env:
             # Name of the CNI config file to create.

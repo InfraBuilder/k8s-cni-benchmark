@@ -121,8 +121,6 @@ spec:
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
-      - key: node.kubernetes.io/not-ready
-        effect: NoSchedule
       containers:
       - name: romana-etcd
         image: gcr.io/google_containers/etcd-amd64:3.0.17
@@ -182,8 +180,6 @@ spec:
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
-      - key: node.kubernetes.io/not-ready
-        effect: NoSchedule
       containers:
       - name: romana-daemon
         image: quay.io/romana/daemon:v2.0.2
@@ -209,8 +205,6 @@ spec:
       serviceAccountName: romana-listener
       tolerations:
       - key: node-role.kubernetes.io/master
-        effect: NoSchedule
-      - key: node.kubernetes.io/not-ready
         effect: NoSchedule
       containers:
       - name: romana-listener
@@ -239,8 +233,6 @@ spec:
       serviceAccountName: romana-agent
       tolerations:
       - key: node-role.kubernetes.io/master
-        effect: NoSchedule
-      - key: node.kubernetes.io/not-ready
         effect: NoSchedule
       containers:
       - name: romana-agent
